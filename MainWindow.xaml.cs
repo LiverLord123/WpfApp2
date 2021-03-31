@@ -28,16 +28,22 @@ namespace WpfApp2
             o2();
             void o2()
             {
-                bool rInputs = true;
-                var up = Key.W;
-                var down = Key.S;
-                var left = Key.A;
-                var right = Key.D;
-                var st0p = Key.Enter;
+            bool rInputs = true;
+            var up = Key.W;
+            var down = Key.S;
+            var left = Key.A;
+            var right = Key.D;
+            var st0p = Key.Enter;
+            
+            o2();
+            void o2()
+            {
                 while (rInputs == true)
                 {
                     string userinputs = "Start";
-                    
+
+                        break;
+                    }
                     if (Keyboard.IsKeyDown(up))
                     {
                         userinputs = userinputs + "up";
@@ -65,11 +71,11 @@ namespace WpfApp2
                         mssg("All");
                         mssg(userinputs);
                         break;
-                    }
                 }
             }
-            
         }
+
+    }
         public void mssg(string a)
                 {
                 MessageBox.Show(a);
