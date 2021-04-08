@@ -26,6 +26,14 @@ namespace WpfApp2
         {
 
             InitializeComponent();
+<<<<<<<<< Temporary merge branch 1
+            bool rInputs = true;
+            var up = Key.W;
+            var down = Key.S;
+            var left = Key.A;
+            var right = Key.D;
+            var st0p = Key.Enter;
+            
             o2();
             
 
