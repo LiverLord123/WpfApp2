@@ -28,13 +28,14 @@ namespace WpfApp2
             InitializeComponent();
 
             
-            o2();
+            ///o2();
             
 
         }
 
             public async void o2()
             {
+                    ///mssg("working?");
                     bool rInputs = true;
                     var up = Key.W;
                     var down = Key.S;
@@ -217,6 +218,7 @@ namespace WpfApp2
                         }
 
                         ///Triple Punches
+                        ///
                         if (Keyboard.IsKeyDown(tp))
                         {
                             if (record11 == false)
@@ -242,6 +244,10 @@ namespace WpfApp2
                         {
                             userinputs = userinputs + "-stop";
                             motioninputs = motioninputs + "-stop";
+                            ///ssssssssssdddddddddddddddddddddddddddddddddddddddddddddddddd
+                            ///ssssssssssssssssssssssdddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+                            ///sdsdsd
+                            ///sddawdasdawdsdawddasdwa
                             ///
                             await File.WriteAllTextAsync("userinputs-log.txt", userinputs);
                             await File.WriteAllTextAsync("motioninputs-log.txt", motioninputs);
@@ -259,19 +265,19 @@ namespace WpfApp2
                             if (d_phase)
                             {
                                 ///userinputs = userinputs + "down";
-                            for (int i = 0; i < 9; i++)
+                            for (int i = 0; i <= 9; i++)
                             {
                                 d_phase = true;
                                 if (df_phase)
                                 {
-                                    for (int b = 0; b < 9; b++)
+                                    for (int b = 0; b <= 9; b++)
                                     {
                                     df_phase = true;
                                     if (r_phase)
                                     {
                                         ///userinputs = userinputs + "right";
                                         motioninputs = motioninputs + "-qcf";
-                                        b = 10;
+                                        break;
                                     }
 
                                     }
@@ -287,7 +293,8 @@ namespace WpfApp2
                         }
                         if (df_phase == true)
                         {
-                            for (int x = 0; x < 8; x++)
+                            phases = phases + "-df_phase";
+                            for (int x = 0; x < 9; x++)
                             {
                                 df_phase = true;
                             }
@@ -319,6 +326,7 @@ namespace WpfApp2
            }
         private void on(object sender, RoutedEventArgs e)
         {
+            
             o2();
         }
         
