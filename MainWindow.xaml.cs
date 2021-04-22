@@ -245,7 +245,7 @@ namespace WpfApp2
                             ///
                             await File.WriteAllTextAsync("userinputs-log.txt", userinputs);
                             await File.WriteAllTextAsync("motioninputs-log.txt", motioninputs);
-                            
+                            await File.WriteAllTextAsync("phases-log.txt", phases);
                             mssg("Stopping");
                             break;
                         }
