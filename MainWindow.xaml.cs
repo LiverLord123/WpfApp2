@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Media;
 
 namespace WpfApp2
 {
@@ -30,13 +31,14 @@ namespace WpfApp2
             
             ///o2();
             
-
         }
 
             public async void o2()
             {
                     ///mssg("working?");
+                    SystemSounds.Beep.Play();
                     bool rInputs = true;
+                    int d = 0;
                     var up = Key.W;
                     var down = Key.S;
                     var left = Key.A;
@@ -50,6 +52,7 @@ namespace WpfApp2
                     var hk = Key.M;
                     var tp = Key.L;
                     var tk = Key.OemComma;
+                    bool compare = true;
                     bool record1 = false;
                     bool record2 = false;
                     bool record3 = false;
@@ -69,7 +72,9 @@ namespace WpfApp2
                     bool r_phase = false;
                     string userinputs = "Start";
                     string motioninputs = "Start";
+                    string scaninputs = "Start";
                     string phases = "Start";
+                    string combo = System.IO.File.ReadAllText(@"C:\Users\mejam\source\repos\WpfApp2\bin\Debug\net5.0-windows\combo.txt");
                     while (rInputs == true)
                     
                     {
@@ -79,7 +84,9 @@ namespace WpfApp2
                             if (record1 == false)
                             {
                                 userinputs = userinputs + "-up";
+                                scaninputs = scaninputs + "-up";
                             }
+                            d = 60;
                             record1 = true;
                             up_phase = true;
                         }
@@ -98,6 +105,7 @@ namespace WpfApp2
                             if (record2 == false)
                             {
                                 userinputs = userinputs + "-down";
+                                scaninputs = scaninputs + "-down";
                             }
                             record2 = true;
                             d_phase = true;
@@ -117,6 +125,7 @@ namespace WpfApp2
                             if (record3 == false)
                             {
                                 userinputs = userinputs + "-left";
+                                scaninputs = scaninputs + "-left";
                             }
                             record3 = true;
                             l_phase = true;
@@ -136,6 +145,7 @@ namespace WpfApp2
                             if (record4 == false)
                             {
                                 userinputs = userinputs + "-right";
+                                scaninputs = scaninputs + "-right";
                             }
                             record4 = true;
                             r_phase = true;
@@ -157,6 +167,7 @@ namespace WpfApp2
                             if (record5 == false)
                             {
                             userinputs = userinputs + "-lp";
+                            scaninputs = scaninputs + "-lp";
                             motioninputs = motioninputs + "-lp";
                             }
                             record5 = true;
@@ -168,6 +179,7 @@ namespace WpfApp2
                             if (record6 == false)
                             {
                             userinputs = userinputs + "-mp";
+                            scaninputs = scaninputs + "-mp";
                             motioninputs = motioninputs + "-mp";
                             }
                             record6 = true;
@@ -179,6 +191,7 @@ namespace WpfApp2
                             if (record7 == false)
                             {
                             userinputs = userinputs + "-hp";
+                            scaninputs = scaninputs + "-hp";
                             motioninputs = motioninputs + "-hp";
                             }
                             record7 = true;
@@ -190,6 +203,7 @@ namespace WpfApp2
                             if (record8 == false)
                             {
                             userinputs = userinputs + "-lk";
+                            scaninputs = scaninputs + "-lk";
                             motioninputs = motioninputs + "lk";
                             }
                             record8 = true;
@@ -201,6 +215,7 @@ namespace WpfApp2
                             if (record9 == false)
                             {
                             userinputs = userinputs + "-mk";
+                            scaninputs = scaninputs + "-mk";
                             motioninputs = motioninputs + "-mk";
                             }
                             record9 = true;
@@ -212,6 +227,7 @@ namespace WpfApp2
                             if (record10 == false)
                             {
                             userinputs = userinputs + "-hk";
+                            scaninputs = scaninputs + "-hk";
                             motioninputs = motioninputs + "-hk";
                             }
                             record10 = true;
@@ -219,11 +235,13 @@ namespace WpfApp2
 
                         ///Triple Punches
                         ///
+                        ///
                         if (Keyboard.IsKeyDown(tp))
                         {
                             if (record11 == false)
                             {
                             userinputs = userinputs + "-tp";
+                            scaninputs = scaninputs + "-tp";
                             motioninputs = motioninputs + "-tp";
                             }
                             record11 = true;
@@ -244,14 +262,11 @@ namespace WpfApp2
                         {
                             userinputs = userinputs + "-stop";
                             motioninputs = motioninputs + "-stop";
-                            ///ssssssssssdddddddddddddddddddddddddddddddddddddddddddddddddd
-                            ///ssssssssssssssssssssssdddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-                            ///sdsdsd
-                            ///sddawdasdawdsdawddasdwa
                             ///
                             await File.WriteAllTextAsync("userinputs-log.txt", userinputs);
                             await File.WriteAllTextAsync("motioninputs-log.txt", motioninputs);
                             await File.WriteAllTextAsync("phases-log.txt", phases);
+                            compare = false;
                             mssg("Stopping");
                             break;
                         }
@@ -318,17 +333,82 @@ namespace WpfApp2
                             {
                                 record4 = false;
                             }
+                        
+                        ///d--;
+                        
+                        if (combo == scaninputs || d == 0 || rInputs == true)
+                        {
+
+                            SystemSounds.Beep.Play();
+                            SystemSounds.Beep.Play();
+                            scaninputs = "Start";
+                            ///Sound twice
+                            ///d = 120;
+                        }
+                        else if (combo != scaninputs || d == 0 || rInputs == true)
+                        {
+                            SystemSounds.Beep.Play();
+                            scaninputs = "Start";
+                            
+                            ///Sound once
+                            ///
+                            
+                            ///d = 120;
+                        }
+                        ///if (d < 0)
+                        ///{
+                            ///d = 0;
+                        ///}
+                        ///break;
                     }
+
+                    d = 0;
+                    ///Sound
+                    ///
+                    while (compare == true)
+                    {
+                        
+                        ///d--;
+                        
+                        if (combo == scaninputs || d == 0 || rInputs == true)
+                        {
+
+                            SystemSounds.Beep.Play();
+                            SystemSounds.Beep.Play();
+                            scaninputs = "Start";
+                            ///Sound twice
+                            ///d = 120;
+                        }
+                        else if (combo != scaninputs || d == 0 || rInputs == true)
+                        {
+                            SystemSounds.Beep.Play();
+                            scaninputs = "Start";
+                            
+                            ///Sound once
+                            ///
+                            
+                            ///d = 120;
+                        }
+                        ///if (d < 0)
+                        ///{
+                            ///d = 0;
+                        ///}
+                        ///break;
+
+                    }
+                    
+                    
             }
         public void mssg(string a)
                 {
                 MessageBox.Show(a);
            }
+        public static System.Media.SystemSound Beep { get; }
         private void on(object sender, RoutedEventArgs e)
         {
             
             o2();
         }
-        
+
     }
 }

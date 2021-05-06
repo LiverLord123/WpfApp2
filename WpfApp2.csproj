@@ -6,4 +6,14 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="combo.PNG" />
+    <None Remove="Hadoken.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="combo.PNG" />
+    <Resource Include="Hadoken.PNG" />
+  </ItemGroup>
+
 </Project>
